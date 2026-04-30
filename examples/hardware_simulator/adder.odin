@@ -14,14 +14,41 @@ import "core:testing"
 
 // }
 
+
+// TODO:
+// Need a "register" type to hold an incoming value when clocked
+// Need a way to connect the output of one module to the input register of another module
+// Need a way to move "ownership" of a fat struct from one module to another without duplication. Possibly have an intrusive list for each type of struct? And each movement keeps it in place in memory, just changes a handle to change ownership?
+
+
 main :: proc() {
     fmt.println("Binary Adder Simulator")
 
-    fmt.println("TODO: Need a way to hook inputs to outputs using handles in an intrusive list")
-
+    MAX_CLOCKS := 10000
+    clocks := 0
     // Each loop is a clock cycle
     // TODO: Eventually try using Tina to schedule different update tasks for different groups of modules
-    // for {}
+    for {
+        // Increment the clock
+        clocks += 1
+
+        ////////////////////////////////////////////////////////////////////////
+        // "Clock" all modules. This copies or moves items from outputs to input registers
+        ////////////////////////////////////////////////////////////////////////
+
+        ////////////////////////////////////////////////////////////////////////
+        // "Update" all modules - compute new output values based on current input register values
+        ////////////////////////////////////////////////////////////////////////
+
+
+        // Check for end condition
+        if clocks >= MAX_CLOCKS {
+            fmt.printfln("Reached max clock cycles (%v), ending simulation.", MAX_CLOCKS)
+            break
+        }
+
+        // repeat
+    }
 }
 
 
